@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝖈𝖆𝖕𝖕𝖊𝖉</title>
+
+    <!-- Favicon (logo de la pestaña) -->
+    <link rel="icon" href="https://www.splcenter.org/sites/default/files/tradyouth.png" type="image/png">
+
+    <style>
+        /* Estilo general de la página */
+        body {
+            background-color: #121212;
+            background-image: url('https://images.unsplash.com/photo-1568283661163-c90193fd13f1?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            overflow-y: scroll;
+            transition: background-color 0.3s ease;
+        }
+
+        h1 {
+            font-size: 4em;
+            color: #fff;
+            margin-top: 20px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        p {
+            font-size: 1.5em;
+            margin-top: 10px;
+            font-style: italic;
+            color: #ddd;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Estilo para los botones */
+        .button-container {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            background-color: #fff;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: #121212;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(255, 0, 51, 0.5);
+        }
+
+        .button:hover {
+            background-color: #f1f1f1;
+            color: #ff0033;
+            box-shadow: 0px 8px 20px rgba(255, 0, 51, 0.7);
+            transform: scale(1.1);
+        }
+
+        /* Contenedor de video */
+        .video-container {
+            margin-top: 40px;
+            width: 80%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+            animation: slideIn 1s ease-out;
+        }
+
+        .youtube-video {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+
+        /* Enlaces */
+        a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #ff0033;
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Efectos para la web gore (destacada) */
+        .gore-link {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #ff0033;
+            border-radius: 15px;
+            color: #fff;
+            font-size: 1.8em;
+            text-transform: uppercase;
+            text-decoration: none;
+            box-shadow: 0px 8px 20px rgba(255, 0, 51, 0.5);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .gore-link:hover {
+            background-color: #cc0022;
+            box-shadow: 0px 12px 25px rgba(255, 0, 51, 0.7);
+            transform: scale(1.1);
+        }
+
+        /* Imágenes flotantes */
+        .floating-image {
+            position: absolute;
+            width: 80px;
+            height: auto;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .floating-image:hover {
+            opacity: 1;
+        }
+
+        /* Hora en la parte superior debajo del título */
+        .time-container {
+            margin-top: 30px;
+            font-size: 1.2em;
+            color: #fff;
+            font-style: italic;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Media query para pantallas pequeñas */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3em;
+            }
+
+            p {
+                font-size: 1.2em;
+            }
+
+            .button-container {
+                flex-direction: column;
+            }
+
+            .video-container {
+                width: 90%;
+            }
+
+            .gore-link {
+                font-size: 1.5em;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Título principal -->
+    <h1>𝖈𝖆𝖕𝖕𝖊𝖉</h1>
+
+    <!-- Hora dinámica -->
+    <div id="time" class="time-container"></div>
+
+    <!-- Texto principal -->
+    <p>Welcome to 𝖈𝖆𝖕𝖕𝖊𝖉.</p>
+
+    <!-- Contenedor de botones -->
+    <div class="button-container">
+        <!-- Botón que redirige a GitHub -->
+        <a href="https://github.com/capped1488" target="_blank" class="button">GitHub</a>
+
+        <!-- Botón que redirige al canal de YouTube -->
+        <a href="https://www.youtube.com/channel/UCwJXufLZ1fpz4uo8Qu-_--A" target="_blank" class="button">YouTube</a>
+    </div>
+
+    <!-- Contenedor del video -->
+    <div class="video-container">
+        <iframe class="youtube-video" src="https://www.youtube.com/embed/kRC74FqiSRk" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <!-- Enlaces a Telegram -->
+    <div class="button-container">
+        <a href="https://t.me/pelis_1488" target="_blank" class="button">𝐦𝐨𝐯𝐢𝐞 𝐜𝐚𝐯𝐞</a>
+        <a href="https://t.me/QuintanillaGore" target="_blank" class="button">𝐆𝐨𝐫𝐞 𝐜𝐨𝐦𝐦𝐮𝐧𝐢𝐭𝐲</a>
+        <a href="https://t.me/bo_sinn0" target="_blank" class="button">𝐜𝐚𝐩𝐩𝐞𝐝</a>
+    </div>
+
+    <!-- Enlace destacado para la web gore -->
+    <a href="https://capped.neocities.org/gore" target="_blank" class="gore-link">𝖈𝖆𝖕𝖕𝖊𝖉 𝐆𝐨𝐫𝐞 𝐰𝐞𝐛</a>
+
+    <!-- Imágenes flotantes -->
+    <img src="https://static.vecteezy.com/system/resources/previews/005/823/450/non_2x/pentagram-pentacle-wicca-star-red-brush-style-hand-drawn-tattoo-satanic-occult-signs-and-mystic-symbol-isolated-on-black-background-vector.jpg" alt="Imagen flotante" class="floating-image" style="top: 10%; left: 5%;">
+    <img src="https://static.vecteezy.com/system/resources/previews/005/823/450/non_2x/pentagram-pentacle-wicca-star-red-brush-style-hand-drawn-tattoo-satanic-occult-signs-and-mystic-symbol-isolated-on-black-background-vector.jpg" alt="Imagen flotante" class="floating-image" style="top: 10%; right: 5%;">
+
+    <script>
+      // Function to update the time
+      function updateTime() {
+          const now = new Date();
+          const options = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+
+          // Use the browser's default language and region
+          const timeString = now.toLocaleTimeString('en-US', options);
+          document.getElementById('time').textContent = `Current time: ${timeString}`;
+      }
+
+      // Update the time every second
+      setInterval(updateTime, 1000);
+      updateTime();  // Call the function immediately to show the time without waiting
+    </script>
+</body>
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gore</title>
+    <style>
+        /* Estilos generales de la página */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Color de fondo negro, en caso de que el GIF no cargue */
+            color: white;
+            cursor: pointer;
+            overflow-x: hidden;
+
+            /* Fondo con un GIF */
+            background-image: url('https://www.todofondos.net/wp-content/uploads/1920x1080-Fondo-de-pantalla-de-craneo-oscuro.-Craneos.-Papel-tapiz.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        header {
+            padding: 20px;
+            background-color: #000;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        /* Estilo del contenedor principal */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr); /* 6 columnas por fila */
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Estilo de cada ítem de video */
+        .video-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .video-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Mantener la relación de aspecto sin distorsionar */
+        }
+
+        /* Botón de play */
+        .video-item .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            color: white;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-item:hover .play-btn {
+            opacity: 1;
+        }
+
+        /* Hover de los videos */
+        .video-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Reproductor de video */
+        #video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        #video-modal iframe {
+            width: 80%;
+            height: 80%;
+        }
+
+        #video-modal .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Mejorar experiencia en móviles */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas más pequeñas */
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                grid-template-columns: 1fr; /* 1 columna en pantallas muy pequeñas */
+            }
+
+            .video-item img {
+                height: 200px; /* Ajuste de altura en pantallas pequeñas */
+            }
+
+            #video-modal iframe {
+                width: 95%;
+                height: 90%;
+            }
+        }
+
+        /* Estilo de los enlaces de descarga */
+        .download-link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #ff0;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .download-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Gore</h1>
+    </header>
+
+    <!-- Contenedor de los videos -->
+    <div class="container">
+        <!-- Video 1 -->
+        <div class="video-item" onclick="openVideo('https://files.catbox.moe/99nh91.mp4')">
+            <img src="https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fcom.ft.imagepublish.upp-prod-eu.s3.amazonaws.com%2Fea925e5a-b24e-11e5-b147-e5e5bba42e51?source=next-article&fit=scale-down&quality=highest&width=700&dpr=1" alt="Escena del video 1">
+            <span class="play-btn">▶</span>
+            <a href="https://files.catbox.moe/99nh91.mp4" class="download-link" download>ver online</a>
+        </div>
+
+        <!-- Video 2 -->
+           <div class="video-item" onclick="openVideo('https://archive.org/embed/stars-of-the-ync-vol.-1')">
+            <img src="https://i.namu.wiki/i/Bxi5bsYV2Mzgkbp09TN7pVHGki6gMZtliC-V7trlnVFGI_dWHRTfEzXP0sPYwmGWrkfFnezhFu2paY2TCzP3Zw.webp" alt="Escena del video 3">
+            <span class="play-btn">▶</span>
+            <a href="https://archive.org/embed/stars-of-the-ync-vol.-1" class="download-link" target="_blank">Ver en Archive.org</a>
+        </div>
+        <!-- Video 3 -->
+   
+                <div class="video-item" onclick="openVideo('https://files.catbox.moe/nf6xxf.mp4')">
+            <img src="https://i.imgur.com/qyJVz2v.png" alt="Escena del video 24">
+            <span class="play-btn">▶</span>
+            <a href="https://files.catbox.moe/example24.mp4" class="download-link" download>ver online</a>
+        </div>
+        <!-- Video 4 -->
+        <div class="video-item" onclick="openVideo('https://files.catbox.moe/tge6zl.mp4')">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBFEoK9D9mv5bTQghjbbiJjKSUNY8cjKHUodsg_E2U5btKNKd-e0ML5uU1ucVhdhtKmmA&usqp=CAU" alt="Escena del video 4">
+            <span class="play-btn">▶</span>
+            <a href="https://files.catbox.moe/tge6zl.mp4" class="download-link" download>ver online</a>
+        </div>
+
+        <!-- Video 5 -->
+        <div class="video-item" onclick="openVideo('https://archive.org/embed/mdpope11')">
+            <img src="https://i.imgur.com/s5KPhqK.png" alt="Escena del video 5">
+            <span class="play-btn">▶</span>
+            <a href="https://archive.org/embed/mdpope11" class="download-link" target="_blank">Ver en Archive.org</a>
+        </div>
+
+        <!-- Video 6 -->
+        <div class="video-item" onclick="openVideo('https://archive.org/embed/mdpope12')">
+            <img src="https://img2.eumovies.info/i0/mdpope12.jpg" alt="Escena del video 6">
+            <span class="play-btn">▶</span>
+            <a href="https://archive.org/embed/mdpope12" class="download-link" target="_blank">Ver en Archive.org</a>
+        </div>
+
+        <!-- Video 7 -->
+        <div class="video-item" onclick="openVideo('https://archive.org/embed/mdpope3')">
+            <img src="https://media.fstatic.com/pBDDNNpz6638X_U9H7g6Luw9DyE=/210x312/smart/filters:format(webp)/media/movies/covers/2022/08/funestte_W0SYjXY.png" alt="Escena del video 7">
+            <span class="play-btn">▶</span>
+            <a href="https://archive.org/embed/mdpope3" class="download-link" target="_blank">Ver en Archive.org</a>
+        </div>
+
+        <!-- Video 8 -->
+        <div class="video-item" onclick="openVideo('https://files.catbox.moe/d6lv9y.mp4')">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUtKtZPG8slKAbz3jwMb2y7oBWJ_XdKc_95Q&s" alt="Escena del video 8">
+            <span class="play-btn">▶</span>
+            <a href="https://files.catbox.moe/d6lv9y.mp4" class="download-link" download>ver online</a>
+        </div>
+
+        <!-- Video 9 -->
+        <div class="video-item" onclick="openVideo('https://archive.org/embed/american-guinea-pig-bouqet-of-guts-and-gore-2014-dvd-9-rip-x-264')">
+            <img src="https://m.media-amazon.com/images/M/MV5BNDAzNTIzMDQ5OF5BMl5BanBnXkFtZTgwOTk1NDE0MzE@._V1_FMjpg_UX1000_.jpg" alt="Escena del video 9">
+            <span class="play-btn">▶</span>
+            <a href="https://archive.org/embed/american-guinea-pig-bouqet-of-guts-and-gore-2014-dvd-9-rip-x-264" class="download-link" target="_blank">Ver en Archive.org</a>
+        </div>
+
+        <!-- Video 10 -->
+        <div class="video-item" onclick="openVideo('https://files.catbox.moe/yzocl1.mp4')">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAMLj4w4g8Bbkk0y7p5NzHcJHnRzkD-YwcEA&s" alt="Escena del video 10">
+            <span class="play-btn">▶</span>
+            <a href="https://files.catbox.moe/yzocl1.mp4" class="download-link" download>ver online</a>
+        </div>
+
+        <!-- Video 11 -->
+        <div class="video-item" onclick="openVideo('https://files.catbox.moe/0ol0vb.mp4')">
+            <img src="https://i.imgur.com/JXglbfn.png" alt="Escena del video 11">
+            <span class="play-btn">▶</span>
+            <a href="https://files.catbox.moe/0ol0vb.mp4" class="download-link" download>ver online</a>
+        </div>
+
+        <!-- Video 12 -->
+        <div class="video-item" onclick="openVideo('https://files.catbox.moe/ozfah3.mp4')">
+            <img src="https://i.imgur.com/T4AVxEa.png" alt="Escena del video 23">
+            <span class="play-btn">▶</span>
+            <a href="https://files.catbox.moe/ozfah3.mp4" class="download-link" download>ver online</a>
+        </div>
+
+        <!-- Video 13 -->
+        <div class="video-item" onclick="openVideo('https://files.catbox.moe/hnkfmd.mp4')">
+            <img src="https://i.imgur.com/IRVB6cx.jpeg" alt="Escena del video 13">
+            <span class="play-btn">▶</span>
+            <a href="https://files.catbox.moe/hnkfmd.mp4" class="download-link" download>ver online</a>
+        </div>
+
+        <!-- Video 14 -->
+        <div class="video-item" onclick="openVideo('https://files.catbox.moe/lig5m3.mp4')">
+            <img src="https://i.imgur.com/1QqLJGP.png" alt="Escena del video 14">
+            <span class="play-btn">▶</span>
+            <a href="https://files.catbox.moe/lig5m3.mp4" class="download-link" download>ver online</a>
+        </div>
+
+        <!-- Video 15 -->
+        <div class="video-item" onclick="openVideo('https://files.catbox.moe/nntvvw.mp4')">
+            <img src="https://i.imgur.com/L0YzzW7.png" alt="Escena del video 15">
+            <span class="play-btn">▶</span>
+            <a href="https://files.catbox.moe/nntvvw.mp4" class="download-link" download>ver online</a>
+        </div>
+
+        <!-- Video 16 -->
+        <div class="video-item" onclick="openVideo('https://files.catbox.moe/vnzhd9.mp4')">
+            <img src="https://i.imgur.com/l6VO8zA.png" alt="Escena del video 16">
+            <span class="play-btn">▶</span>
+            <a href="https://files.catbox.moe/vnzhd9.mp4" class="download-link" download>ver online</a>
+        </div>
+
+        <!-- Video 17 -->
+        <div class="video-item" onclick="openVideo('https://archive.org/embed/TheUltimateHardgoreSplatterTape')">
+            <img src="https://image.tmdb.org/t/p/w500/ehem5wSVQHQ471iWkOMlnctnrhf.jpg" alt="Escena del video 17">
+            <span class="play-btn">▶</span>
+            <a href="https://files.catbox.moe/jkcvf3.mp4" class="download-link" download>ver online</a>
+        </div>
+
+        <!-- Video 18 -->
+        <div class="video-item" onclick="openVideo('https://archive.org/embed/zombio-petter-baiestorf-1999')">
+            <img src="https://m.media-amazon.com/images/M/MV5BMzM4MzlkMDMtYzQwNi00MjJhLTlkYWQtODgwYzI2MjQyMGY4XkEyXkFqcGc@._V1_QL75_UY281_CR2,0,190,281_.jpg" alt="Escena del video 18">
+            <span class="play-btn">▶</span>
+            <a href="https://files.catbox.moe/hgyqwx.mp4" class="download-link" download>ver online</a>
+        </div>
+
+        <!-- Video 19 -->
+        <div class="video-item" onclick="openVideo('https://files.catbox.moe/v970y5.mp4')">
+            <img src="https://i.imgur.com/JzvTNiG.png" alt="Escena del video 19">
+            <span class="play-btn">▶</span>
+            <a href="https://files.catbox.moe/fhevc7.mp4" class="download-link" download>ver online</a>
+        </div>
+
+        <!-- Video 20 -->
+        <div class="video-item" onclick="openVideo('https://archive.org/embed/video_2024-11-09_20-09-06')">
+            <img src="https://i.imgur.com/zeQ6hne.png" alt="Escena del video 20">
+            <span class="play-btn">▶</span>
+            <a href="https://files.catbox.moe/ynwd17.mp4" class="download-link" download>ver online</a>
+        </div>
+
+        <!-- Videos 21 - 40 -->
+  <div class="video-item" onclick="openVideo('https://files.catbox.moe/xuwxr0.mp4')">
+    <img src="https://i.imgur.com/UgHoQqC.png" alt="Escena del video 21">
+    <span class="play-btn">▶</span>
+    <a href="https://files.catbox.moe/xuwxr0.mp4" class="download-link" download>ver online</a>
+</div>
+
+        <!-- Video 22 -->
+        <div class="video-item" onclick="openVideo('https://files.catbox.moe/np9ml6.mp4')">
+            <img src="https://i.imgur.com/vLu026U.png" alt="Escena del video 22">
+            <span class="play-btn">▶</span>
+            <a href="https://files.catbox.moe/example22.mp4" class="download-link" download>ver online</a>
+        </div>
+
+        <!-- Video 23 -->
+          <div class="video-item" onclick="openVideo('https://files.catbox.moe/m8chm8.mp4')">
+            <img src="https://i.imgur.com/1gehrE8.png" alt="Escena del video 12">
+            <span class="play-btn">▶</span>
+            <a href="https://files.catbox.moe/m8chm8.mp4" class="download-link" download>ver online</a>
+        </div>
+
+        <!-- Video 24 -->
+           <div class="video-item" onclick="openVideo('https://files.catbox.moe/if8ssv.mp4')">
+            <img src="https://i.imgur.com/Dd0HFh6.jpeg" alt="Escena del video 2">
+            <span class="play-btn">▶</span>
+            <a href="https://files.catbox.moe/if8ssv.mp4" class="download-link" download>ver online</a>
+        </div>
+        <!-- Video 25 -->
+<div class="video-item" onclick="openVideo('https://files.catbox.moe/x9vvz2.mp4')">
+    <img src="https://www.vice.com/wp-content/uploads/sites/2/2017/08/nuevo-hallazgo-demuestra-existencia-de-canibalismo-ritual-nuestros-antepasados-1502732512.jpg?w=1024" alt="Escena del video 25">
+    <span class="play-btn">▶</span>
+    <a href="https://files.catbox.moe/example25.mp4" class="download-link" download>ver online</a>
+</div>
+
+<!-- Video 26 -->
+<div class="video-item" onclick="openVideo('https://files.catbox.moe/o5b0iy.mp4')">
+    <img src="https://i.imgur.com/HRE00l1.png" alt="Escena del video 26">
+    <span class="play-btn">▶</span>
+    <a href="https://archive.org/embed/example-video-26" class="download-link" target="_blank">Ver online</a>
+</div>
+
+<!-- Video 27 -->
+<div class="video-item" onclick="openVideo('https://files.catbox.moe/wj203w.mp4')">
+    <img src="https://i.imgur.com/7dhQwLq.png" alt="Escena del video 27">
+    <span class="play-btn">▶</span>
+    <a href="https://files.catbox.moe/example27.mp4" class="download-link" download>ver online</a>
+</div>
+
+<!-- Video 28 -->
+<div class="video-item" onclick="openVideo('https://files.catbox.moe/763q7r.mp4')">
+    <img src="https://i.imgur.com/OfWljIg.png" alt="Escena del video 28">
+    <span class="play-btn">▶</span>
+    <a href="https://archive.org/embed/example-video-28" class="download-link" target="_blank">ver online</a>
+</div>
+
+<!-- Video 29 -->
+<div class="video-item" onclick="openVideo('https://files.catbox.moe/pkgesa.MOV')">
+    <img src="https://i.imgur.com/BuFowtp.png" alt="Escena del video 29">
+    <span class="play-btn">▶</span>
+    <a href="https://files.catbox.moe/example29.mp4" class="download-link" download>descargar</a>
+</div>
+<!-- Video 30 -->
+<div class="video-item" onclick="openVideo('https://files.catbox.moe/xl0w7h.mp4')">
+    <img src="https://i.imgur.com/p7LOGyi.png" alt="Escena del video 30">
+    <span class="play-btn">▶</span>
+    <a href="https://files.catbox.moe/example30.mp4" class="download-link" download>ver online</a>
+</div>
+
+<!-- Video 31 -->
+<div class="video-item" onclick="openVideo('https://files.catbox.moe/tu1gg6.MOV')">
+    <img src="https://i.imgur.com/niCVPJi.png" alt="Escena del video 31">
+    <span class="play-btn">▶</span>
+    <a href="https://files.catbox.moe/example31.mp4" class="download-link" download>descargar</a>
+</div>
+
+<!-- Video 32 -->
+<div class="video-item" onclick="openVideo('https://files.catbox.moe/fh85yv.mp4')">
+    <img src="https://i.imgur.com/XPCEEla.png" alt="Escena del video 32">
+    <span class="play-btn">▶</span>
+    <a href="https://files.catbox.moe/example32.mp4" class="download-link" download>ver online</a>
+</div>
+
+<!-- Video 33 -->
+<div class="video-item" onclick="openVideo('https://files.catbox.moe/2e5bqm.mp4')">
+    <img src="https://cdn.prod.website-files.com/63e6603a6fb93a524d2305a9/63e6adb4a148edac6b693fc6_Box-front.webp" alt="Escena del video 33">
+    <span class="play-btn">▶</span>
+    <a href="https://files.catbox.moe/example33.mp4" class="download-link" download>ver online</a>
+</div>
+
+<!-- Video 34 -->
+<div class="video-item" onclick="openVideo('https://files.catbox.moe/v6e4a3.MOV')">
+    <img src="https://i.imgur.com/qFGFqll.png" alt="Escena del video 34">
+    <span class="play-btn">▶</span>
+    <a href="https://files.catbox.moe/example34.mp4" class="download-link" download>descargar</a>
+</div>
+<!-- Video 35 -->
+<div class="video-item" onclick="openVideo('https://files.catbox.moe/4pphmi.mp4')">
+    <img src="https://aldianews.com/sites/default/files/articles/tik_tok_narco_2_0.jpg" alt="Escena del video 35">
+    <span class="play-btn">▶</span>
+    <a href="https://files.catbox.moe/sample35.mp4" class="download-link" download>ver online</a>
+</div>
+
+<!-- Video 36 -->
+<div class="video-item" onclick="openVideo('https://archive.org/embed/sample-video36')">
+    <img src="https://i.imgur.com/2Xg4i0h.png" alt="Escena del video 36">
+    <span class="play-btn">▶</span>
+    <a href="https://archive.org/embed/sample-video36" class="download-link" target="_blank">Ver en Archive.org</a>
+</div>
+
+    <!-- Modal para reproducir video -->
+    <div id="video-modal">
+        <span class="close" onclick="closeVideo()">&times;</span>
+        <iframe id="video-frame" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <script>
+        // Función para abrir el video en un modal
+        function openVideo(url) {
+            document.getElementById('video-frame').src = url;
+            document.getElementById('video-modal').style.display = 'flex';
+        }
+
+        // Función para cerrar el modal
+        function closeVideo() {
+            document.getElementById('video-frame').src = '';
+            document.getElementById('video-modal').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>  
